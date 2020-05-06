@@ -16,7 +16,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-.tcenter {
+
+.semere {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -27,20 +28,21 @@
 <body>
 	<header style="background-color: #03a9f4; height: 30px;"> </header>
 
-	<div class="container">
-		<img src="img/student.png" class="tcenter" style="height: 200px;">
+	<div  class="container">
+		<img src="img/student.png" class="semere"  style="height: 200px;">
 		<form action="auth" method="post">
-		<div  class="tcenter" style="width: 50%">
+		<div  class="semere"   style="width: 50%">
 		            <label for="username">Username</label>
 		            <input type="text" name="username" class="form-control">
 		              <br/>
-		               <label for="password">Password</label>
+		               <label>Password</label>
 		            <input type="password" name="password" class="form-control">
 		             <br/>
 		<button type="submit" class="btn btn-primary">Sign In</button>
 		<button type="button" class="btn btn-danger">Clear</button>
 		<a href="register.jsp"><button type="button" class="btn btn-info">Sign Up</button></a>
-		<a href="register.jsp"><button type="button" class="btn btn-primary">Forget Password</button></a>
+		<a href="fortgotPassword.jsp"><button type="button" class="btn btn-primary">Forget Password</button></a>
+		<a href="users"><button type="button" class="btn btn-danger">Show Users</button></a>
 		</div>
 		</form>
 	</div>

@@ -40,13 +40,13 @@ public class AuthServlet extends HttpServlet {
 					if(rs.next())  {
 						//public UserEntity(String userid, String password, String email, String name, String mobile, String image,String salutation) {
 						   UserEntity entity=new UserEntity(rs.getString(2),rs.getString(3), 
-								   rs.getString(5),rs.getString(4), rs.getLong(6)+"",rs.getString(7),rs.getString(8));
+								   rs.getString(5),rs.getString(4), rs.getLong(6)+"",rs.getString(8),rs.getString(7));
+						   
 						   entity.setUid(rs.getInt(1));
 						   entity.setCreateDate(rs.getTimestamp(9));
 						   
 						   //Here we are adding this data to show on review page
 						   req.setAttribute("pdata", entity);
-						 
 						   req.getRequestDispatcher("review.jsp").forward(req,resp);
 					}else {
 						 req.getRequestDispatcher("fail.jsp").forward(req,resp);
