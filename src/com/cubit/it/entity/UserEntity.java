@@ -12,6 +12,7 @@ public class UserEntity {
 	private String image;
 	private String salutation;
 	private Timestamp createDate;
+	private String role;
 	
 	public UserEntity() {}
 	public UserEntity(String userid, String password, String email, String name, String mobile, String image,
@@ -95,10 +96,21 @@ public class UserEntity {
 		this.salutation = salutation;
 	}
 
+	
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
+	public String getRole() {
+		return role;
+	}
 	@Override
 	public String toString() {
-		return "UserEntity [userid=" + userid + ", password=" + password + ", email=" + email + ", name=" + name
-				+ ", mobile=" + mobile + ", image=" + image + ", salutation=" + salutation + "]";
+		return "UserEntity [uid=" + uid + ", userid=" + userid + ", password=" + password + ", email=" + email
+				+ ", name=" + name + ", mobile=" + mobile + ", image=" + image + ", salutation=" + salutation
+				+ ", createDate=" + createDate + ", role=" + role + "]";
 	}
+	
+	
 
 }

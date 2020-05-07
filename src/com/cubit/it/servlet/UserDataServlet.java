@@ -23,7 +23,7 @@ public class UserDataServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             try {
             	//Fetching all the rows no where class
-        		String sql="select uid,userid,password,name,email,mobile,salutation,image,createdate from users_tbl";
+        		String sql="select uid,userid,password,name,email,mobile,salutation,image,createdate,role from users_tbl";
 				//Loading the Driver
 				Class.forName("com.mysql.jdbc.Driver");
 				//Creating connection
@@ -41,7 +41,7 @@ public class UserDataServlet extends HttpServlet {
 					   //Setting the uid
 					   entity.setUid(rs.getInt(1));
 					   entity.setCreateDate(rs.getTimestamp(9));
-					   
+					   entity.setRole(rs.getString(10));
 					   userList.add(entity);
 				}
 				//Adding List into request scope against key "mark"
