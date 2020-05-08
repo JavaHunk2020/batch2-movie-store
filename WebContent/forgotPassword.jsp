@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login</title>
+<title>Forgot Password</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -34,23 +34,21 @@
 	 </header>
 	<div  class="container">
 	     <hr style="border-top: 5px solid rgba(103,58,183,1);"/>
-		<img src="img/student.png" class="semere"  style="height: 200px;">
+		<img src="img/password.png" class="semere"  style="height: 140px;">
 		
-		<form action="auth" method="post">
+		<form action="forgotPassword" method="post">
 		<div  class="semere"   style="width: 50%">
 		 <span style="color:red;font-size: 16px;font-weight: bold;">${msg}</span>
 		 			<br/>
-		            <label for="username">Username</label>
-		            <input type="text" name="username" class="form-control">
+		            <label for="email">Email*</label>
+		            <input type="email" name="email" class="form-control">
 		              <br/>
-		               <label>Password</label>
-		            <input type="password" name="password" class="form-control">
-		             <br/>
-		<button type="submit" class="btn btn-primary">Sign In</button>
-		<button type="button" class="btn btn-danger">Clear</button>
-		<a href="register.jsp"><button type="button" class="btn btn-info">Sign Up</button></a>
-		<a href="forgotPassword.jsp"><button type="button" class="btn btn-primary">Forget Password</button></a>
+		<button type="submit" class="btn btn-primary">Forgot Password In</button>
+		<a href="index.jsp"><button type="button" class="btn btn-info">Sign In</button></a>
+		<hr/>
+		 <b>${password}</b>
 		</div>
+		 
 		</form>
 	</div>
 
