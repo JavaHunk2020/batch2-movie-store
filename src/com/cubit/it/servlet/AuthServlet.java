@@ -1,10 +1,13 @@
 package com.cubit.it.servlet;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,18 +40,33 @@ public class AuthServlet extends HttpServlet {
 					ResultSet rs=pstmt.executeQuery();
 					//uid,userid,password,name,email,mobile,salutation,image,createdate 
 					if(rs.next())  {
-						//public UserEntity(String userid, String password, String email, String name, String mobile, String image,String salutation) {
-						   UserEntity entity=new UserEntity(rs.getString(2),rs.getString(3), 
-								   rs.getString(5),rs.getString(4), rs.getLong(6)+"",rs.getString(8),rs.getString(7));
-						   
-						   entity.setUid(rs.getInt(1));
-						   entity.setCreateDate(rs.getTimestamp(9));
+						  UserEntity entity=new UserEntity();
+						   int uid=rs.getInt(1);
+						   String userid=rs.getString(2);
+						   String dpassword=rs.getString(3);
+						   String name=rs.getString(4);
+						   String email=rs.getString(5);
+						   BigDecimal mobile=rs.getBigDecimal(6);
+						   String salutation=rs.getString(7);
+						   String image=rs.getString(8);
+						   Timestamp doe=rs.getTimestamp(9);
 						   String role=rs.getString(10);
+						   
+						   entity.setUid(uid);
+						   entity.setUserid(userid);
+						   entity.setPassword(dpassword);
+						   entity.setName(name);
+						   entity.setEmail(email);
+						   entity.setMobile(mobile.longValue()+"");
+						   entity.setImage(image);
+						   entity.setSalutation(salutation);
+						   entity.setCreateDate(doe);
 						   entity.setRole(role);
 						   //Here we are adding this data to show on review page
 						   //Creatign session scope for the user
 						   //CTR-SHIFT+O
 						   HttpSession session=req.getSession();
+						   session.setMaxInactiveInterval(30);
 						   //Adding data into session scope instead of request scope
 						   session.setAttribute("pdata", entity);
 						   req.getRequestDispatcher("review.jsp").forward(req,resp);
