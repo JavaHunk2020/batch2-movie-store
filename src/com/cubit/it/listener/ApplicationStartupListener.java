@@ -28,7 +28,7 @@ public class ApplicationStartupListener  implements ServletContextListener{
 		   //and what ever data you will add here . it will be accessible to every resources
 		  ServletContext context= sce.getServletContext();
 		
-	/*	 try {
+	 try {
 			 
 			 String sql="select startTime,Endtime from open_time_tbl where tid=1";
 				//Loading the Driver
@@ -45,11 +45,13 @@ public class ApplicationStartupListener  implements ServletContextListener{
 					long endTimeInMillis = endTime.getHours()*60*60*1000+endTime.getMinutes()*60*1000+endTime.getSeconds()*1000;
 					context.setAttribute("startTimeInMillis", startTimeInMillis);
 					context.setAttribute("endTimeInMillis", endTimeInMillis);
+					context.setAttribute("startTime", startTime);
+					context.setAttribute("endTime", endTime);
 				}
 		 }catch (Exception e) {
 			 e.printStackTrace();
 		}
-		 */
+		
 		
 		   System.out.println("****************************************************");
 		   System.out.println("*********Application is Up and Running now***********");

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 //All the incoming request
-@WebFilter("/*")
+@WebFilter(value="/*")
 public class SessionBlockerFilter implements Filter {
 	
 	private Set<String> allowedUrls=new HashSet<>();
@@ -36,9 +36,11 @@ public class SessionBlockerFilter implements Filter {
 		allowedUrls.add("/forgotPassword");
 		allowedUrls.add("/unavaliable.jsp");
 		//Accesing  data 
-		//ServletContext   se= filterConfig.getServletContext();
-		//startTime=(long)se.getAttribute("startTimeInMillis");
-		//endTime=(long)se.getAttribute("endTimeInMillis");
+		ServletContext   se= filterConfig.getServletContext();
+		
+		//updating default values
+		startTime=(long)se.getAttribute("startTimeInMillis");
+		endTime=(long)se.getAttribute("endTimeInMillis");
 	}
 
 	@Override

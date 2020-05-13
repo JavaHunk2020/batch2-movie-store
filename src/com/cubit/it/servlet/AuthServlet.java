@@ -66,7 +66,7 @@ public class AuthServlet extends HttpServlet {
 						   //Creatign session scope for the user
 						   //CTR-SHIFT+O
 						   HttpSession session=req.getSession();
-						   session.setMaxInactiveInterval(30);
+						   session.setMaxInactiveInterval(30*2*5);
 						   //Adding data into session scope instead of request scope
 						   session.setAttribute("pdata", entity);
 						   req.getRequestDispatcher("review.jsp").forward(req,resp);

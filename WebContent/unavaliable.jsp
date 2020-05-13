@@ -35,7 +35,7 @@
 	<div  class="container">
 	     <hr style="border-top: 5px solid rgba(103,58,183,1);"/>
 		<img src="img/student.png" class="semere"  style="height: 200px;">
-		<h1>Sorry! this application is only up and running between 6:00 PM to 7:00 PM only</h1>	
+		<h1>Sorry! this application is only up and running between ${applicationScope.startTime} PM to ${applicationScope.endTime} PM only</h1>	
 		<img src="img/sorry.jpg" class="semere"  style="height: 330px;">
 		
 	</div>

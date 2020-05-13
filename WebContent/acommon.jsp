@@ -9,6 +9,10 @@
    				  	 <a href="profile.jsp"> 
    				  	        <button type="button" class="btn btn-success">Profile</button>
    				  	 </a>
+   				  	 
+   				  	   <a href="blockTime"> 
+   				  	        <button type="button" class="btn btn-warning">Block Times</button>
+   				  	 </a>
    				  	  <a href="logout"> 
    				  	        <button type="button" class="btn btn-warning">Logout</button>
    				  	 </a>
