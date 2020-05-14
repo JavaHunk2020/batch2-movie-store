@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cubit.it.entity.UserEntity;
+import com.cubit.it.utils.SQLConnUtil;
 
 @WebServlet("/register")
 public class RegisterServlet  extends HttpServlet{
@@ -31,10 +32,7 @@ public class RegisterServlet  extends HttpServlet{
 			//Write JDBC Code to save all the data into database
 			try {
 				String sql="INSERT INTO users_tbl(userid,password,name,email,mobile,salutation,image,createdate) values(?,?,?,?,?,?,?,?)";
-				//Loading the Driver
-				Class.forName("com.mysql.jdbc.Driver");
-				//Creating connection
-				Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/happy_hrs_db","root","mysql@1234");
+				Connection connection=SQLConnUtil.getConnection();
 				//compiling the query
 				PreparedStatement pstmt=connection.prepareStatement(sql);
 				pstmt.setString(1,entity.getUserid());

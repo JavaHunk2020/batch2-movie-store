@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cubit.it.utils.SQLConnUtil;
+
 @WebServlet("/unlockBlockTime")
 public class UnlockBlockTimeServlet  extends HttpServlet{
 	
@@ -18,10 +20,8 @@ public class UnlockBlockTimeServlet  extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		  String tid=req.getParameter("tid");
 		  try {
-				//Loading the Driver
-				Class.forName("com.mysql.jdbc.Driver");
-				//Creating connection
-				Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/happy_hrs_db","root","mysql@1234");
+			  
+			  Connection connection=SQLConnUtil.getConnection();
 				String sql="update open_time_tbl set active='Yes' where tid = "+Integer.parseInt(tid);
 				//compiling the query
 				PreparedStatement pstmt=connection.prepareStatement(sql);

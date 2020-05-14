@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cubit.it.entity.UserEntity;
+import com.cubit.it.utils.SQLConnUtil;
 
 @WebServlet("/users")
 public class UserDataServlet extends HttpServlet {
@@ -24,10 +25,9 @@ public class UserDataServlet extends HttpServlet {
             try {
             	//Fetching all the rows no where class
         		String sql="select uid,userid,password,name,email,mobile,salutation,image,createdate,role from users_tbl";
-				//Loading the Driver
-				Class.forName("com.mysql.jdbc.Driver");
-				//Creating connection
-				Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/happy_hrs_db","root","mysql@1234");
+        		
+        		Connection connection=SQLConnUtil.getConnection();
+        		
 				//compiling the query
 				PreparedStatement pstmt=connection.prepareStatement(sql);
 				//fire the  query
