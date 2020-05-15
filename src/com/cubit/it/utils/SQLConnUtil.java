@@ -7,7 +7,7 @@ public class SQLConnUtil {
 	private static final String DRIVER="com.mysql.jdbc.Driver";
 	private static final String DB_URL="jdbc:mysql://localhost:3306/happy_hrs_db";
 	private static final String DB_USERNAME="root";
-	private static final String DB_PASSWORD="root";
+	private static final String DB_PASSWORD="mysql@1234";
 	
 	public static Connection getConnection() throws Exception{
 		//Loading the Driver

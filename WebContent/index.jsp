@@ -25,6 +25,7 @@
 }
 </style>
 
+
 </head>
 <body>
 	<header style="background-color: #03a9f4; height: 30px;">
@@ -34,25 +35,75 @@
 	 </header>
 	<div  class="container">
 	     <hr style="border-top: 5px solid rgba(103,58,183,1);"/>
-		<img src="img/student.png" class="semere"  style="height: 200px;">
+		<img id="studentImage"  src="img/student.png" class="semere"  style="height: 200px;">
 		
-		<form action="auth" method="post">
+		<form name="loginform" action="auth" method="post">
 		<div  class="semere"   style="width: 50%">
-		 <span style="color:red;font-size: 16px;font-weight: bold;">${msg}</span>
+		 <span  id="message"  style="color:red;font-size: 16px;font-weight: bold;">
+		       ${msg}
+		 </span>
 		 			<br/>
 		            <label for="username">Username</label>
-		            <input type="text" name="username" class="form-control">
+		            <input type="text" name="username" class="form-control"  onkeyup="clearMessage();">
 		              <br/>
 		               <label>Password</label>
-		            <input type="password" name="password" class="form-control">
+		            <input type="password" name="password" class="form-control" onkeyup="clearMessage();">
 		             <br/>
-		<button type="submit" class="btn btn-primary">Sign In</button>
+		<button type="button" class="btn btn-primary"  onclick="validateAuth();">Sign In</button>
 		<button type="button" class="btn btn-danger">Clear</button>
 		<a href="register.jsp"><button type="button" class="btn btn-info">Sign Up</button></a>
 		<a href="forgotPassword.jsp"><button type="button" class="btn btn-primary">Forget Password</button></a>
+		
+		<button type="button" class="btn btn-danger"  onclick="validate();">Change Image</button>
 		</div>
 		</form>
 	</div>
 
+
+<script>
+
+
+function clearMessage(){
+	 var spanObject=window.document.getElementById("message");
+	  spanObject.innerHTML="";
+}
+
+function validateAuth()  {
+	  //window.document.loginform.username = object
+	  var username=document.loginform.username.value;
+	  if(username.length==0) {
+		  var spanObject=window.document.getElementById("message");
+		  spanObject.innerHTML="Username cannot be empty";
+		  document.loginform.username.focus();
+		  return;
+	  }
+	  var password=window.document.loginform.password.value;	  
+	  if(password.length==0) {
+		  var spanObject=window.document.getElementById("message");
+		  spanObject.innerHTML="Password cannot be empty";
+		  document.loginform.password.focus();
+		  return;
+	  }
+	  //submit form data from client to server using JavaScript
+	  document.loginform.submit();
+}
+   
+   //This is called global variable
+   var count =1;
+   
+    function validate()  {
+    	  //Accessing an object in JavaScript
+    	  var imgObj=window.document.getElementById("studentImage");
+    	  imgObj.src="img/college-student-dental-health.jpg";
+    	  console.log("Hello do not click here!!!!!!!!!!!!! count = "+count);
+    		count++;
+    }
+
+    var  x =100;
+    var  y =900;
+    var temp = x+y;
+    //System.out.println
+    console.log("temp  = "+temp);		
+</script>
 </body>
 </html>
