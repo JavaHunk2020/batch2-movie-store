@@ -35,6 +35,7 @@ public class SessionBlockerFilter implements Filter {
 		allowedUrls.add("/register");
 		allowedUrls.add("/forgotPassword");
 		allowedUrls.add("/unavaliable.jsp");
+		allowedUrls.add("/unavaliable.jsp");
 		//Accesing  data 
 		ServletContext   se= filterConfig.getServletContext();
 		
@@ -52,7 +53,7 @@ public class SessionBlockerFilter implements Filter {
 		 String resourceName=httpServletRequest.getServletPath();
 		 System.out.println("Accessing resource = "+resourceName+" at time  "+LocalDateTime.now());
 		 
-		 if(resourceName.contains("/img")) {
+		 if(resourceName.contains("/img") || resourceName.contains("tjs")) {
 			  chain.doFilter(request, response);
 		 }
 		 else {
