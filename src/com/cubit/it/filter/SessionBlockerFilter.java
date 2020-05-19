@@ -1,4 +1,4 @@
-package com.cubit.it.servlet;
+package com.cubit.it.filter;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -16,6 +16,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.cubit.it.servlet.Utils;
 
 //All the incoming request
 @WebFilter(value="/*")
@@ -36,6 +38,8 @@ public class SessionBlockerFilter implements Filter {
 		allowedUrls.add("/forgotPassword");
 		allowedUrls.add("/unavaliable.jsp");
 		allowedUrls.add("/unavaliable.jsp");
+		allowedUrls.add("/searchJsonUser");
+		
 		//Accesing  data 
 		ServletContext   se= filterConfig.getServletContext();
 		

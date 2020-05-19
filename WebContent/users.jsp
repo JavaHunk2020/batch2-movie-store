@@ -35,7 +35,20 @@
     <div  class="container">
          <%@include file="acommon.jsp" %>
 		
-		<h4>Users Data</h4>            
+		<h4>Users Data</h4>  
+		
+		<form name="searchForm" action="searchUser">
+		     <input  value="${param.searchText}"   type="text" name="searchText" id="searchText" class="form-control" style="width: 50%;display: inline;"  onkeyup="clearMessage();">
+		     &nbsp;&nbsp;&nbsp;
+			<button type="button" class="btn btn-primary"  onclick="searchData();">GO</button>
+			<a href="users">
+			<button type="button" class="btn btn-danger">Clear</button>
+			</a>
+		</form>
+		<br/>
+	<div class="alert alert-danger"  id="message" style="display:none">
+  <strong>Sorry!</strong> search string cannot be empty.
+</div>	          
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -103,7 +116,24 @@
       </tr>
     </tbody>
   </table>
-		
 	</div>
+	<script type="text/javascript">
+	
+	    function clearMessage(){
+	    	 document.getElementById("message").style="display:none";
+	    }
+	
+	     function searchData() {
+			 var searchText=document.getElementById("searchText").value;
+			 if(searchText.length == 0){
+				 // alert("Hello Search Text cannot be empty.");
+				  document.getElementById("message").style="display:block";
+				  return;
+			 }
+			 //submitting form through JavaScript
+			 document.searchForm.submit();
+	     }
+	
+	</script>
 </body>
 </html>

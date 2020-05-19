@@ -15,4 +15,6 @@ public interface CubicDao {
 
 	String forgetPassword(String email);
 
+	public  List<UserEntity>  searchUser(String searchText);
+
 }

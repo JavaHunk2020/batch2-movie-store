@@ -50,10 +50,12 @@
     <tbody>
     
     <c:forEach items="${blockTimeList}"  var="blockTime">
-      <tr  
-      <c:if test="${blockTime.active=='Yes'}">
+      <tr
+            <c:if test="${blockTime.active=='Yes'}">
       style="background-color:#73b5fd;"
-        </c:if> >
+        </c:if>
+      
+      >
         <td>${blockTime.tid}</td>
         <td>${blockTime.startTime}</td>
         <td>${blockTime.endTime}</td>

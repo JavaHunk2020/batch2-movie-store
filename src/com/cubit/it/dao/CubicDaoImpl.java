@@ -136,4 +136,35 @@ public class CubicDaoImpl  implements CubicDao {
 		return entity;
 	}
 
+
+	@Override
+	public List<UserEntity> searchUser(String searchText) {
+		List<UserEntity> userList=new ArrayList<>(); 
+		   try {
+           	//Fetching all the rows no where class
+       		String sql="select uid,userid,password,name,email,mobile,salutation,image,createdate,role "
+       				+ "from users_tbl where name like '%"+searchText+"%'  or email like '%"+searchText+"%'  or userid like '%"+searchText+"%'";
+       		Connection connection=SQLConnUtil.getConnection();
+				//compiling the query
+				PreparedStatement pstmt=connection.prepareStatement(sql);
+				//fire the  query
+				ResultSet rs=pstmt.executeQuery();
+				//ResultSet has multiple records
+				
+				while(rs.next()) {
+					//public UserEntity(String userid, String password, String email, String name, String mobile, String image,String salutation) {
+					   UserEntity entity=new UserEntity(rs.getString(2),rs.getString(3), 
+							   rs.getString(5),rs.getString(4), rs.getLong(6)+"",rs.getString(8),rs.getString(7));
+					   //Setting the uid
+					   entity.setUid(rs.getInt(1));
+					   entity.setCreateDate(rs.getTimestamp(9));
+					   entity.setRole(rs.getString(10));
+					   userList.add(entity);
+				}
+		   }catch (Exception e) {
+			   	e.printStackTrace();
+		}		
+		return userList;
+	}
+
 }
